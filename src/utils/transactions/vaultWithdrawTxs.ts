@@ -3,9 +3,9 @@ import { BigNumberish } from "@ethersproject/bignumber";
 
 import { Transaction, VaultAsset } from "../../@types";
 
-const vaultDepositTx = (poolAsset: VaultAsset, amount: BigNumberish): Transaction => {
-  const vaultAddress: string = poolAsset.vaultContractAddress as string;
-  const vaultInterface: Interface = new Interface(poolAsset.vaultContractABI);
+const vaultDepositTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction => {
+  const vaultAddress: string = vaultAsset.vaultContractAddress as string;
+  const vaultInterface: Interface = new Interface(vaultAsset.vaultContractABI);
 
   const depositTransaction: Transaction = {
     data: vaultInterface.encodeFunctionData("withdraw", [amount]),
@@ -16,8 +16,8 @@ const vaultDepositTx = (poolAsset: VaultAsset, amount: BigNumberish): Transactio
   return depositTransaction;
 };
 
-const vaultDepositTxs = (poolAsset: VaultAsset, amount: BigNumberish): Transaction[] => [
-  vaultDepositTx(poolAsset, amount),
+const vaultDepositTxs = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction[] => [
+  vaultDepositTx(vaultAsset, amount),
 ];
 
 export default vaultDepositTxs;

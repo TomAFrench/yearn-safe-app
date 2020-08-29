@@ -51,15 +51,15 @@ function VaultsTable(): ReactElement {
 
   const autoColumns = useMemo(() => columns.filter((column: Column) => !column.custom), [columns]);
 
-  const tableContents = vaultAssets.map(poolAsset => ({
-    ...humanVault(poolAsset),
+  const tableContents = vaultAssets.map(vaultAsset => ({
+    ...humanVault(vaultAsset),
     actions: (
       <>
         <ActionButton
           color="primary"
           onClick={() => {
             setModalAction("deposit");
-            setSelectedVaultAsset(poolAsset);
+            setSelectedVaultAsset(vaultAsset);
           }}
         >
           Deposit
@@ -68,7 +68,7 @@ function VaultsTable(): ReactElement {
           color="secondary"
           onClick={() => {
             setModalAction("withdraw");
-            setSelectedVaultAsset(poolAsset);
+            setSelectedVaultAsset(vaultAsset);
           }}
         >
           Withdraw

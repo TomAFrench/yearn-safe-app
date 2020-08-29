@@ -23,7 +23,7 @@ function VaultProvider({ children }: Props) {
   const safeAddress = useSafeAddress();
   const network = useSafeNetwork() || "mainnet";
 
-  const [vaultAssets, setPoolAssets] = useState<VaultAsset[]>(VAULT_ASSETS);
+  const [vaultAssets, setVaultAssets] = useState<VaultAsset[]>(VAULT_ASSETS);
 
   useEffect(() => {
     const updateAPY = async () => {
@@ -37,7 +37,7 @@ function VaultProvider({ children }: Props) {
           vaultBalance: await getBalance(provider, asset.vaultContractAddress || "", safeAddress || ""),
         })),
       );
-      setPoolAssets(newVaultAssets);
+      setVaultAssets(newVaultAssets);
     };
     updateAPY();
   }, [safeAddress, network]);
