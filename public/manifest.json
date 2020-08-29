@@ -1,0 +1,20 @@
+{
+  "name": "Yearn Vaults",
+  "description": "Safe App for interacting with Yearn Vaults",
+  "providedBy": {
+    "name": "Yearn Finance",
+    "url": "https://yearn.finance"
+  },
+  "icons": [
+    {
+      "src": "logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    }
+  ],
+  "iconPath": "logo.png",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#f77423",
+  "background_color": "#ffffff"
+}
