@@ -5,6 +5,7 @@ import TableRow from "@material-ui/core/TableRow";
 
 import styled from "styled-components";
 import { Button } from "@gnosis.pm/safe-react-components";
+import { formatUnits } from "@ethersproject/units";
 import Table from "./Table";
 
 import { VaultAsset } from "../../@types";
@@ -32,11 +33,13 @@ const humanVault = (vaultAsset: VaultAsset): HumanReadableVault => {
   return {
     id,
     symbol,
-    balance,
+    symbolOrder: symbol.toLowerCase(),
     apy: `${apy ? (apy * 100).toFixed(2) : "0.00"}%`,
-    vaultBalance,
+    apyOrder: apy || 0,
     humanBalance,
+    humanBalanceOrder: parseFloat(formatUnits(balance, decimals)),
     humanVaultBalance,
+    humanVaultBalanceOrder: parseFloat(formatUnits(vaultBalance, decimals)),
   };
 };
 

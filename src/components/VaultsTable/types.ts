@@ -1,11 +1,11 @@
-import { BigNumberish } from "@ethersproject/bignumber";
-
 export type HumanReadableVault = {
   id: string;
   apy: string;
+  apyOrder: number;
   symbol: string;
-  balance: BigNumberish;
-  vaultBalance: BigNumberish;
+  symbolOrder: string;
   humanBalance: string;
+  humanBalanceOrder: number;
   humanVaultBalance: string;
+  humanVaultBalanceOrder: number;
 };

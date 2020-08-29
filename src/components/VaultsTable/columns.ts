@@ -20,7 +20,7 @@ export type Column = {
 export const generateColumns = () => {
   const assetColumn: Column = {
     id: VAULT_TABLE_SYMBOL_ID,
-    order: false,
+    order: true,
     disablePadding: false,
     label: "Asset",
     custom: false,
@@ -29,12 +29,11 @@ export const generateColumns = () => {
 
   const returnColumn: Column = {
     id: VAULT_TABLE_ROI_ID,
-    order: false,
+    order: true,
     disablePadding: false,
     label: "ROI",
     custom: false,
     width: 120,
-    static: true,
   };
 
   const safeBalanceColumn: Column = {
