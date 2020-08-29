@@ -3,10 +3,10 @@ import styled, { ThemeProvider } from "styled-components";
 
 import { Title } from "@gnosis.pm/safe-react-components";
 
-import StreamTable from "./components/VaultsTable";
+import VaultsTable from "./components/VaultsTable";
 import theme from "./theme";
 
-const StreamsOuterWrapper = styled.div`
+const VaultsOuterWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
   padding: 16px 24px;
@@ -27,24 +27,18 @@ const StyledTitle = styled(Title)`
   margin-left: 10px;
 `;
 
-function YearnApp() {
-  /** State Variables **/
-
-  /** Side Effects **/
-
-  return (
-    <ThemeProvider theme={theme}>
-      <StreamsOuterWrapper>
-        <TopLeftHorizontalWrapper>
-          <img src="logo.png" alt="YFI Logo" height="30px" />
-          <StyledTitle size="xs">Yearn Finance Vaults</StyledTitle>
-        </TopLeftHorizontalWrapper>
-        <TableWrapper>
-          <StreamTable />
-        </TableWrapper>
-      </StreamsOuterWrapper>
-    </ThemeProvider>
-  );
-}
+const YearnApp: React.FC = () => (
+  <ThemeProvider theme={theme}>
+    <VaultsOuterWrapper>
+      <TopLeftHorizontalWrapper>
+        <img src="logo.png" alt="YFI Logo" height="30px" />
+        <StyledTitle size="xs">Yearn Finance Vaults</StyledTitle>
+      </TopLeftHorizontalWrapper>
+      <TableWrapper>
+        <VaultsTable />
+      </TableWrapper>
+    </VaultsOuterWrapper>
+  </ThemeProvider>
+);
 
 export default YearnApp;
