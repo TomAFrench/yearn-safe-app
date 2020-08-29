@@ -27,19 +27,16 @@ const ActionButton = styled(Button).attrs({ size: "md", variant: "contained", st
 
 const humanVault = (vaultAsset: VaultAsset): HumanReadableVault => {
   const { id, apy, decimals, symbol, balance, vaultBalance, vaultSymbol } = vaultAsset;
-  const humanBalance: string = `${BigNumberToRoundedHumanFormat(balance, decimals)} ${symbol}`;
-  const humanVaultBalance: string = `${BigNumberToRoundedHumanFormat(vaultBalance, decimals)} ${vaultSymbol}`;
-
   return {
     id,
     symbol,
     symbolOrder: symbol.toLowerCase(),
     apy: `${apy ? (apy * 100).toFixed(2) : "0.00"}%`,
     apyOrder: apy || 0,
-    humanBalance,
-    humanBalanceOrder: parseFloat(formatUnits(balance, decimals)),
-    humanVaultBalance,
-    humanVaultBalanceOrder: parseFloat(formatUnits(vaultBalance, decimals)),
+    balance: `${BigNumberToRoundedHumanFormat(balance, decimals)} ${symbol}`,
+    balanceOrder: parseFloat(formatUnits(balance, decimals)),
+    vaultBalance: `${BigNumberToRoundedHumanFormat(vaultBalance, decimals)} ${vaultSymbol}`,
+    vaultBalanceOrder: parseFloat(formatUnits(vaultBalance, decimals)),
   };
 };
 

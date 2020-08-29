@@ -4,8 +4,8 @@ export type HumanReadableVault = {
   apyOrder: number;
   symbol: string;
   symbolOrder: string;
-  humanBalance: string;
-  humanBalanceOrder: number;
-  humanVaultBalance: string;
-  humanVaultBalanceOrder: number;
+  balance: string;
+  balanceOrder: number;
+  vaultBalance: string;
+  vaultBalanceOrder: number;
 };

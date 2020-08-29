@@ -1,8 +1,8 @@
 export const VAULT_TABLE_ID = "id";
 export const VAULT_TABLE_SYMBOL_ID = "symbol";
 export const VAULT_TABLE_ROI_ID = "apy";
-export const VAULT_TABLE_SAFE_BALANCE_ID = "humanBalance";
-export const VAULT_TABLE_VAULT_BALANCE_ID = "humanVaultBalance";
+export const VAULT_TABLE_SAFE_BALANCE_ID = "balance";
+export const VAULT_TABLE_VAULT_BALANCE_ID = "vaultBalance";
 export const VAULT_TABLE_ACTIONS_ID = "actions";
 
 export type Column = {
