@@ -25,9 +25,9 @@ const StyledTableRow = styled(TableRow)`
 const ActionButton = styled(Button).attrs({ size: "md", variant: "contained", style: { margin: "0px 5px" } })``;
 
 const humanVault = (vaultAsset: VaultAsset): HumanReadableVault => {
-  const { id, apy, decimals, symbol, balance, vaultBalance } = vaultAsset;
-  const humanBalance: string = BigNumberToRoundedHumanFormat(balance, decimals);
-  const humanVaultBalance: string = BigNumberToRoundedHumanFormat(vaultBalance, decimals);
+  const { id, apy, decimals, symbol, balance, vaultBalance, vaultSymbol } = vaultAsset;
+  const humanBalance: string = `${BigNumberToRoundedHumanFormat(balance, decimals)} ${symbol}`;
+  const humanVaultBalance: string = `${BigNumberToRoundedHumanFormat(vaultBalance, decimals)} ${vaultSymbol}`;
 
   return {
     id,
