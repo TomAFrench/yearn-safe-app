@@ -1,4 +1,4 @@
-import React, { ReactElement, useState, ChangeEvent, useCallback } from "react";
+import React, { ReactElement, useState, ChangeEvent } from "react";
 import { ModalFooterConfirmation, GenericModal, Text, TextField, Button } from "@gnosis.pm/safe-react-components";
 
 import styled from "styled-components";
@@ -29,29 +29,42 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
   /** State Variables **/
   const [amount, setAmount] = useState<string>("");
 
-  const performAction = useCallback(
-    (actionAmount: BigNumber) => {
-      if (actionAmount.gt(0)) {
-        const txs =
-          action === "deposit"
-            ? vaultDepositTxs(vaultAsset as VaultAsset, actionAmount)
-            : vaultWithdrawTxs(vaultAsset as VaultAsset, actionAmount);
-        sendTransactions(txs);
-      }
-    },
-    [action, sendTransactions, vaultAsset],
-  );
+  if (vaultAsset === null) return null;
+
+  const assetSymbol = action === "deposit" ? vaultAsset.symbol : vaultAsset.vaultSymbol;
+  const maxAmount = action === "deposit" ? vaultAsset.balance : vaultAsset.vaultBalance;
+
+  const performAction = (actionAmount: BigNumber) => {
+    if (actionAmount.gt(0) && actionAmount.lte(maxAmount)) {
+      const txs =
+        action === "deposit"
+          ? vaultDepositTxs(vaultAsset as VaultAsset, actionAmount)
+          : vaultWithdrawTxs(vaultAsset as VaultAsset, actionAmount);
+      sendTransactions(txs);
+    }
+  };
+
+  const handleChangeAmount = (newAmount: string) => {
+    if (newAmount === "") {
+      setAmount(newAmount);
+      return;
+    }
+    try {
+      const newAmountInWei = parseUnits(newAmount, vaultAsset.decimals);
+      const newAmountTruc = newAmountInWei.lte(maxAmount) ? newAmount : formatUnits(maxAmount, vaultAsset.decimals);
+      setAmount(newAmountTruc);
+    } catch (error) {
+      console.warn("Error setting new amount");
+      console.log(error);
+    }
+  };
 
   const closeModal = () => {
     setAmount("0");
     setVaultAsset(null);
   };
 
-  if (vaultAsset === null) return null;
   const capitalisedAction = action[0].toUpperCase() + action.slice(1);
-  const assetSymbol = action === "deposit" ? vaultAsset.symbol : vaultAsset.vaultSymbol;
-  const maxAmount = action === "deposit" ? vaultAsset.balance : vaultAsset.vaultBalance;
-
   const modalTitle = `${capitalisedAction} ${vaultAsset.symbol}`;
 
   const modalBody = (
@@ -66,7 +79,7 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
           style={{ width: "200px" }}
           label="Amount"
           value={amount}
-          onChange={(e: ChangeEvent<HTMLInputElement>): void => setAmount(e.target.value)}
+          onChange={(e: ChangeEvent<HTMLInputElement>): void => handleChangeAmount(e.target.value)}
         />
       </StyledItem>
       <StyledItem>
@@ -114,10 +127,9 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
   const modalFooter = (
     <ModalFooterConfirmation
       okText={`${capitalisedAction}`}
-      // okDisabled={false}
       handleCancel={closeModal}
       handleOk={() => {
-        console.log(`${action}ing ${amount} tokens`);
+        console.log(`${action}ing ${amount} ${assetSymbol}`);
         performAction(parseUnits(amount, vaultAsset.decimals));
       }}
     />
