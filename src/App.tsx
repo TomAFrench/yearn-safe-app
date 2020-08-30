@@ -27,12 +27,17 @@ const StyledTitle = styled(Title)`
   margin-left: 10px;
 `;
 
+const SecretText = styled(StyledTitle)`
+  color: #eeeeee;
+  opacity: 0.2;
+`;
+
 const YearnApp: React.FC = () => (
   <ThemeProvider theme={theme}>
     <VaultsOuterWrapper>
       <TopLeftHorizontalWrapper>
         <img src="logo.svg" alt="YFI Logo" height="30px" />
-        <StyledTitle size="xs">Yearn Finance Vaults</StyledTitle>
+        <StyledTitle size="xs">Yearn Finance Vaults</StyledTitle> <SecretText size="xs">Oh my</SecretText>
       </TopLeftHorizontalWrapper>
       <TableWrapper>
         <VaultsTable />
