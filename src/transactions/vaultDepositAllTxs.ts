@@ -1,5 +1,5 @@
 import { Interface } from "@ethersproject/abi";
-import { BigNumberish, BigNumber } from "@ethersproject/bignumber";
+import { BigNumber } from "@ethersproject/bignumber";
 import { Transaction, VaultAsset } from "../@types";
 import erc20ApproveTx from "./erc20ApproveTx";
 
