@@ -3,9 +3,9 @@ import { ModalFooterConfirmation, GenericModal, Text, TextField, Button } from "
 
 import styled from "styled-components";
 import { parseUnits, formatUnits } from "@ethersproject/units";
-import { BigNumber } from "@ethersproject/bignumber";
+import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import { useSendTransactions } from "../../contexts/SafeContext";
-import { VaultAsset } from "../../@types";
+import { VaultAsset, Transaction } from "../../@types";
 import { BigNumberToRoundedHumanFormat } from "../../utils";
 import { vaultDepositTxs, vaultWithdrawTxs, vaultDepositAllTxs, vaultWithdrawAllTxs } from "../../transactions";
 
@@ -23,6 +23,22 @@ interface Props {
   action: "deposit" | "withdraw";
 }
 
+const prepareTransactions = (
+  vaultAsset: VaultAsset,
+  action: "deposit" | "withdraw",
+  amount: BigNumberish,
+  maxAmount: BigNumberish,
+): Transaction[] => {
+  if (action === "deposit") {
+    return vaultAsset.depositAll && BigNumber.from(amount).eq(maxAmount)
+      ? vaultDepositAllTxs(vaultAsset as VaultAsset)
+      : vaultDepositTxs(vaultAsset as VaultAsset, amount);
+  }
+  return vaultAsset.withdrawAll && BigNumber.from(amount).eq(maxAmount)
+    ? vaultWithdrawAllTxs(vaultAsset as VaultAsset)
+    : vaultWithdrawTxs(vaultAsset as VaultAsset, amount);
+};
+
 const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement | null => {
   const sendTransactions = useSendTransactions();
   /** State Variables **/
@@ -34,19 +50,8 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
   const maxAmount = action === "deposit" ? vaultAsset.balance : vaultAsset.vaultBalance;
 
   const performAction = (actionAmount: BigNumber) => {
-    if (actionAmount.eq(maxAmount)) {
-      const txs =
-        action === "deposit"
-          ? vaultDepositAllTxs(vaultAsset as VaultAsset)
-          : vaultWithdrawAllTxs(vaultAsset as VaultAsset);
-      sendTransactions(txs);
-    }
     if (actionAmount.gt(0) && actionAmount.lte(maxAmount)) {
-      const txs =
-        action === "deposit"
-          ? vaultDepositTxs(vaultAsset as VaultAsset, actionAmount)
-          : vaultWithdrawTxs(vaultAsset as VaultAsset, actionAmount);
-      sendTransactions(txs);
+      sendTransactions(prepareTransactions(vaultAsset, action, actionAmount, maxAmount));
     }
   };
 
