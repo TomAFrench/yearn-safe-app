@@ -31,7 +31,7 @@ const YearnApp: React.FC = () => (
   <ThemeProvider theme={theme}>
     <VaultsOuterWrapper>
       <TopLeftHorizontalWrapper>
-        <img src="logo.png" alt="YFI Logo" height="30px" />
+        <img src="logo.svg" alt="YFI Logo" height="30px" />
         <StyledTitle size="xs">Yearn Finance Vaults</StyledTitle>
       </TopLeftHorizontalWrapper>
       <TableWrapper>

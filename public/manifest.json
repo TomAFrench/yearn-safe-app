@@ -7,12 +7,12 @@
   },
   "icons": [
     {
-      "src": "logo.png",
-      "type": "image/png",
+      "src": "logo.svg",
+      "type": "image/svg",
       "sizes": "96x96"
     }
   ],
-  "iconPath": "logo.png",
+  "iconPath": "logo.svg",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#f77423",
