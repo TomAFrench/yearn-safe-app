@@ -5,6 +5,7 @@ import Erc20Abi from "../abis/erc20.json";
 
 const getBalance = async (provider: Provider, erc20Address: string, userAddress: string): Promise<BigNumberish> => {
   try {
+    if (erc20Address === "Ethereum") return await provider.getBalance(userAddress);
     const erc20Contract = new Contract(erc20Address, Erc20Abi, provider);
     const userBalance = await erc20Contract.balanceOf(userAddress);
     return userBalance;
