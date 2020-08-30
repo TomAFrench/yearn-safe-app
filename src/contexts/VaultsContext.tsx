@@ -28,16 +28,19 @@ function VaultProvider({ children }: Props) {
   useEffect(() => {
     const updateAPY = async () => {
       const provider = getDefaultProvider(network, { infura: process.env.REACT_APP_INFURA_KEY, quorum: 1 });
-
-      const newVaultAssets = await Promise.all(
-        VAULT_ASSETS.map(async asset => ({
-          ...asset,
-          apy: await getAPY(provider, asset),
-          balance: await getBalance(provider, asset.erc20address, safeAddress || ""),
-          vaultBalance: await getBalance(provider, asset.vaultContractAddress || "", safeAddress || ""),
-        })),
-      );
-      setVaultAssets(newVaultAssets);
+      try {
+        const newVaultAssets = await Promise.all(
+          VAULT_ASSETS.map(async asset => ({
+            ...asset,
+            apy: await getAPY(provider, asset),
+            balance: await getBalance(provider, asset.erc20address, safeAddress || ""),
+            vaultBalance: await getBalance(provider, asset.vaultContractAddress || "", safeAddress || ""),
+          })),
+        );
+        setVaultAssets(newVaultAssets);
+      } catch (error) {
+        console.log("ERROR", error);
+      }
     };
     updateAPY();
   }, [safeAddress, network]);
