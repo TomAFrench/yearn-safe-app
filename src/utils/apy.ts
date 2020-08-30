@@ -1,5 +1,6 @@
 import { Contract } from "@ethersproject/contracts";
 import { Provider } from "@ethersproject/providers";
+import { formatUnits } from "@ethersproject/units";
 import { VaultAsset } from "../@types";
 
 const getAPY = async (provider: Provider, asset: VaultAsset): Promise<number> => {
@@ -12,16 +13,15 @@ const getAPY = async (provider: Provider, asset: VaultAsset): Promise<number> =>
   try {
     const block = await provider.getBlockNumber();
     const vault = new Contract(asset.vaultContractAddress, asset.vaultContractABI, provider);
-    let balance = await vault.getPricePerFullShare();
+    const pricePerFullShare = await vault.getPricePerFullShare();
 
-    balance -= asset.measurement;
-    balance /= 1e18;
-    const diff = block - asset.lastMeasurement;
+    const growthInWei = pricePerFullShare.sub(asset.measurement.toString());
+    const blocksSinceVaultCreation = block - asset.lastMeasurement;
 
-    balance /= diff;
-    balance *= 2425846;
+    const magicNumber = 2425846;
+    const roi = growthInWei.mul(magicNumber).div(blocksSinceVaultCreation);
 
-    return parseFloat(balance);
+    return parseFloat(formatUnits(roi, 18));
   } catch (e) {
     console.log(e);
     return 0;
