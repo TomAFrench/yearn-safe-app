@@ -63,6 +63,7 @@ function VaultsTable(): ReactElement {
       <>
         <ActionButton
           color="primary"
+          disabled={vaultAsset.depositDisabled}
           onClick={() => {
             setModalAction("deposit");
             setSelectedVaultAsset(vaultAsset);
