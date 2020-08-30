@@ -55,7 +55,6 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
       setAmount(newAmountTruc);
     } catch (error) {
       console.warn("Error setting new amount");
-      console.log(error);
     }
   };
 
