@@ -97,6 +97,7 @@ function VaultsTable(): ReactElement {
         size={tableContents.length}
         noBorder
         disableLoadingOnEmptyTable
+        disablePagination
       >
         {(sortedData: HumanReadableVault[]) =>
           sortedData.map((row: HumanReadableVault) => (
