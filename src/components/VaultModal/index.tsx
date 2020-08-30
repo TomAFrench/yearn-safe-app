@@ -6,8 +6,8 @@ import { parseUnits, formatUnits } from "@ethersproject/units";
 import { BigNumber } from "@ethersproject/bignumber";
 import { useSendTransactions } from "../../contexts/SafeContext";
 import { VaultAsset } from "../../@types";
-import vaultDepositTxs from "../../utils/transactions/vaultDespositTxs";
-import vaultWithdrawTxs from "../../utils/transactions/vaultWithdrawTxs";
+import vaultDepositTxs from "../../transactions/vaultDespositTxs";
+import vaultWithdrawTxs from "../../transactions/vaultWithdrawTxs";
 import { BigNumberToRoundedHumanFormat } from "../../utils";
 
 const StyledItem = styled.div`
