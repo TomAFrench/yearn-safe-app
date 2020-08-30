@@ -14,6 +14,7 @@ export type VaultAsset = {
   description: string;
   vaultSymbol: string;
   erc20address: string;
+  icon: string;
   vaultContractAddress: string | null;
   vaultContractABI: any[];
   balance: BigNumberish;

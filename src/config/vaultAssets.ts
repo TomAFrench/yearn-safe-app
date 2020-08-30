@@ -2,6 +2,17 @@ import vaultContractABI from "../abis/vaultContract.json";
 import vaultContractV2ABI from "../abis/vaultContractV2.json";
 import vaultContractV3ABI from "../abis/vaultContractV3.json";
 // import vaultContractV4ABI from "../abis/vaultContractV4.json";
+
+import alinkIcon from "../assets/alink.svg";
+import crvIcon from "../assets/crv.svg";
+import daiIcon from "../assets/dai.svg";
+// import ethIcon from "../assets/eth.svg";
+import linkIcon from "../assets/link.svg";
+import tusdIcon from "../assets/tusd.svg";
+import usdcIcon from "../assets/usdc.svg";
+import usdtIcon from "../assets/usdt.svg";
+import yfiIcon from "../assets/yfi.svg";
+
 import { VaultAsset } from "../@types";
 
 const vaultAssets: VaultAsset[] = [
@@ -11,6 +22,7 @@ const vaultAssets: VaultAsset[] = [
   //   symbol: "ETH",
   //   description: "Ether",
   //   vaultSymbol: "yETH",
+  //   icon: ethIcon,
   //   erc20address: "Ethereum",
   //   vaultContractAddress: null,
   //   vaultContractABI: vaultContractV4ABI,
@@ -31,6 +43,7 @@ const vaultAssets: VaultAsset[] = [
   //   symbol: "WETH",
   //   description: "Wrappeth Ether",
   //   vaultSymbol: "yWETH",
+  //   icon: ethIcon,
   //   erc20address: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
   //   vaultContractAddress: null,
   //   vaultContractABI: vaultContractV4ABI,
@@ -51,6 +64,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "YFI",
     description: "yearn.finance",
     vaultSymbol: "yYFI",
+    icon: yfiIcon,
     erc20address: "0x0bc529c00C6401aEF6D220BE8C6Ea1667F6Ad93e",
     vaultContractAddress: "0xBA2E7Fed597fd0E3e70f5130BcDbbFE06bB94fe1",
     vaultContractABI: vaultContractV2ABI,
@@ -71,6 +85,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "yCRV",
     description: "yDAI/yUSDC/yUSDT/yTUSD",
     vaultSymbol: "yUSD",
+    icon: crvIcon,
     erc20address: "0xdF5e0e81Dff6FAF3A7e52BA697820c5e32D806A8",
     vaultContractAddress: "0x5dbcF33D8c2E976c6b560249878e6F1491Bca25c",
     vaultContractABI,
@@ -91,6 +106,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "crvBUSD",
     description: "yDAI/yUSDC/yUSDT/yBUSD",
     vaultSymbol: "ycrvBUSD",
+    icon: crvIcon,
     erc20address: "0x3B3Ac5386837Dc563660FB6a0937DFAa5924333B",
     vaultContractAddress: "0x2994529c0652d127b7842094103715ec5299bbed",
     vaultContractABI: vaultContractV3ABI,
@@ -111,6 +127,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "crvBTC",
     description: "renBTC/wBTC/sBTC",
     vaultSymbol: "ycrvBTC",
+    icon: crvIcon,
     erc20address: "0x075b1bb99792c9E1041bA13afEf80C91a1e70fB3",
     vaultContractAddress: "0x7Ff566E1d69DEfF32a7b244aE7276b9f90e9D0f6",
     vaultContractABI: vaultContractV3ABI,
@@ -131,6 +148,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "DAI",
     description: "DAI Stablecoin",
     vaultSymbol: "yDAI",
+    icon: daiIcon,
     erc20address: "0x6B175474E89094C44Da98b954EedeAC495271d0F",
     vaultContractAddress: "0xACd43E627e64355f1861cEC6d3a6688B31a6F952",
     vaultContractABI: vaultContractV2ABI,
@@ -151,6 +169,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "TUSD",
     description: "TrueUSD",
     vaultSymbol: "yTUSD",
+    icon: tusdIcon,
     erc20address: "0x0000000000085d4780B73119b644AE5ecd22b376",
     vaultContractAddress: "0x37d19d1c4E1fa9DC47bD1eA12f742a0887eDa74a",
     vaultContractABI: vaultContractV2ABI,
@@ -171,6 +190,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "USDC",
     description: "USD//C",
     vaultSymbol: "yUSDC",
+    icon: usdcIcon,
     erc20address: "0xA0b86991c6218b36c1d19D4a2e9Eb0cE3606eB48",
     vaultContractAddress: "0x597aD1e0c13Bfe8025993D9e79C69E1c0233522e",
     vaultContractABI,
@@ -191,6 +211,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "USDT",
     description: "Tether USD",
     vaultSymbol: "yUSDT",
+    icon: usdtIcon,
     erc20address: "0xdAC17F958D2ee523a2206206994597C13D831ec7",
     vaultContractAddress: "0x2f08119C6f07c006695E079AAFc638b8789FAf18",
     vaultContractABI: vaultContractV2ABI,
@@ -211,6 +232,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "aLINK",
     description: "Aave Interest bearing LINK",
     vaultSymbol: "yaLINK",
+    icon: alinkIcon,
     erc20address: "0xA64BD6C70Cb9051F6A9ba1F163Fdc07E0DfB5F84",
     vaultContractAddress: "0x29E240CFD7946BA20895a7a02eDb25C210f9f324",
     vaultContractABI: vaultContractV2ABI,
@@ -231,6 +253,7 @@ const vaultAssets: VaultAsset[] = [
     symbol: "LINK",
     description: "ChainLink",
     vaultSymbol: "yLINK",
+    icon: linkIcon,
     erc20address: "0x514910771AF9Ca656af840dff83E8264EcF986CA",
     vaultContractAddress: "0x881b06da56BB5675c54E4Ed311c21E54C5025298",
     vaultContractABI: vaultContractV2ABI,

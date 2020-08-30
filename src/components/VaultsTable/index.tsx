@@ -23,13 +23,19 @@ const StyledTableRow = styled(TableRow)`
   }
 `;
 
+const AssetDisplay = ({ asset }: { asset: VaultAsset }) => (
+  <div style={{ display: "flex", alignItems: "center" }}>
+    <img src={asset.icon} alt={asset.symbol} width="30px" style={{ marginRight: "10px" }} /> {asset.symbol}
+  </div>
+);
+
 const ActionButton = styled(Button).attrs({ size: "md", variant: "contained", style: { margin: "0px 5px" } })``;
 
 const humanVault = (vaultAsset: VaultAsset): HumanReadableVault => {
   const { id, apy, decimals, symbol, balance, vaultBalance, vaultSymbol } = vaultAsset;
   return {
     id,
-    symbol,
+    symbol: <AssetDisplay asset={vaultAsset} />,
     symbolOrder: symbol.toLowerCase(),
     apy: `${apy ? (apy * 100).toFixed(2) : "0.00"}%`,
     apyOrder: apy || 0,
