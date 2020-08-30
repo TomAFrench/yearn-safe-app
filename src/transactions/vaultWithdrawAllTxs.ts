@@ -1,15 +1,14 @@
 import { Interface } from "@ethersproject/abi";
 import { BigNumberish } from "@ethersproject/bignumber";
-
 import { Transaction, VaultAsset } from "../@types";
 import erc20ApproveTx from "./erc20ApproveTx";
 
-const vaultWithdrawTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction => {
+const vaultWithdrawAllTx = (vaultAsset: VaultAsset): Transaction => {
   const vaultAddress: string = vaultAsset.vaultContractAddress as string;
   const vaultInterface: Interface = new Interface(vaultAsset.vaultContractABI);
 
   const withdrawTransaction: Transaction = {
-    data: vaultInterface.encodeFunctionData("withdraw", [amount]),
+    data: vaultInterface.encodeFunctionData("withdrawAll"),
     to: vaultAddress,
     value: 0,
   };
@@ -17,11 +16,11 @@ const vaultWithdrawTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transact
   return withdrawTransaction;
 };
 
-const vaultWithdrawTxs = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction[] => {
-  const approvalTransaction = erc20ApproveTx(vaultAsset, amount);
-  const depositTransaction = vaultWithdrawTx(vaultAsset, amount);
+const vaultWithdrawAllTxs = (vaultAsset: VaultAsset): Transaction[] => {
+  const approvalTransaction = erc20ApproveTx(vaultAsset, vaultAsset.vaultBalance);
+  const withdrawTransaction = vaultWithdrawAllTx(vaultAsset);
 
-  return [approvalTransaction, depositTransaction];
+  return [approvalTransaction, withdrawTransaction];
 };
 
-export default vaultWithdrawTxs;
+export default vaultWithdrawAllTxs;

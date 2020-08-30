@@ -6,9 +6,8 @@ import { parseUnits, formatUnits } from "@ethersproject/units";
 import { BigNumber } from "@ethersproject/bignumber";
 import { useSendTransactions } from "../../contexts/SafeContext";
 import { VaultAsset } from "../../@types";
-import vaultDepositTxs from "../../transactions/vaultDespositTxs";
-import vaultWithdrawTxs from "../../transactions/vaultWithdrawTxs";
 import { BigNumberToRoundedHumanFormat } from "../../utils";
+import { vaultDepositTxs, vaultWithdrawTxs, vaultDepositAllTxs, vaultWithdrawAllTxs } from "../../transactions";
 
 const StyledItem = styled.div`
   display: flex;
@@ -35,6 +34,13 @@ const VaultModal = ({ vaultAsset, setVaultAsset, action }: Props): ReactElement 
   const maxAmount = action === "deposit" ? vaultAsset.balance : vaultAsset.vaultBalance;
 
   const performAction = (actionAmount: BigNumber) => {
+    if (actionAmount.eq(maxAmount)) {
+      const txs =
+        action === "deposit"
+          ? vaultDepositAllTxs(vaultAsset as VaultAsset)
+          : vaultWithdrawAllTxs(vaultAsset as VaultAsset);
+      sendTransactions(txs);
+    }
     if (actionAmount.gt(0) && actionAmount.lte(maxAmount)) {
       const txs =
         action === "deposit"
