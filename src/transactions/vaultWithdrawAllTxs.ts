@@ -1,6 +1,5 @@
 import { Interface } from "@ethersproject/abi";
 import { Transaction, VaultAsset } from "../@types";
-import erc20ApproveTx from "./erc20ApproveTx";
 
 const vaultWithdrawAllTx = (vaultAsset: VaultAsset): Transaction => {
   const vaultAddress: string = vaultAsset.vaultContractAddress as string;
@@ -16,10 +15,9 @@ const vaultWithdrawAllTx = (vaultAsset: VaultAsset): Transaction => {
 };
 
 const vaultWithdrawAllTxs = (vaultAsset: VaultAsset): Transaction[] => {
-  const approvalTransaction = erc20ApproveTx(vaultAsset, vaultAsset.vaultBalance);
   const withdrawTransaction = vaultWithdrawAllTx(vaultAsset);
 
-  return [approvalTransaction, withdrawTransaction];
+  return [withdrawTransaction];
 };
 
 export default vaultWithdrawAllTxs;
