@@ -16,7 +16,26 @@ const vaultDepositTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transacti
   return depositTransaction;
 };
 
+const vaultDepositEthTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction => {
+  const vaultAddress: string = vaultAsset.vaultContractAddress as string;
+  const vaultInterface: Interface = new Interface(vaultAsset.vaultContractABI);
+
+  const depositTransaction: Transaction = {
+    data: vaultInterface.encodeFunctionData("depositEth"),
+    to: vaultAddress,
+    value: amount,
+  };
+
+  return depositTransaction;
+};
+
 const vaultDepositTxs = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction[] => {
+  // No approval needed for an ETH deposit.
+  if (vaultAsset.erc20address === "Ethereum") {
+    const depositTransaction = vaultDepositEthTx(vaultAsset, amount);
+    return [depositTransaction];
+  }
+
   const approvalTransaction = erc20ApproveTx(vaultAsset, amount);
   const depositTransaction = vaultDepositTx(vaultAsset, amount);
 

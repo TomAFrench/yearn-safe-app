@@ -6,7 +6,7 @@ import vaultContractV4ABI from "../abis/vaultContractV4.json";
 import alinkIcon from "../assets/alink.svg";
 import crvIcon from "../assets/crv.svg";
 import daiIcon from "../assets/dai.svg";
-// import ethIcon from "../assets/eth.svg";
+import ethIcon from "../assets/eth.svg";
 import linkIcon from "../assets/link.svg";
 import tusdIcon from "../assets/tusd.svg";
 import usdcIcon from "../assets/usdc.svg";
@@ -17,27 +17,27 @@ import yfiIcon from "../assets/yfi.svg";
 import { VaultAsset } from "../@types";
 
 const vaultAssets: VaultAsset[] = [
-  // {
-  //   id: "ETH",
-  //   name: "ETH",
-  //   symbol: "ETH",
-  //   description: "Ether",
-  //   vaultSymbol: "yETH",
-  //   icon: ethIcon,
-  //   erc20address: "Ethereum",
-  //   vaultContractAddress: "0xe1237aA7f535b0CC33Fd973D66cBf830354D16c7",
-  //   vaultContractABI: vaultContractV4ABI,
-  //   balance: 0,
-  //   vaultBalance: 0,
-  //   decimals: 18,
-  //   deposit: true,
-  //   depositAll: false,
-  //   depositDisabled: false,
-  //   withdraw: true,
-  //   withdrawAll: true,
-  //   lastMeasurement: 10695309,
-  //   measurement: 1e18,
-  // },
+  {
+    id: "ETH",
+    name: "ETH",
+    symbol: "ETH",
+    description: "Ether",
+    vaultSymbol: "yETH",
+    icon: ethIcon,
+    erc20address: "Ethereum",
+    vaultContractAddress: "0xe1237aA7f535b0CC33Fd973D66cBf830354D16c7",
+    vaultContractABI: vaultContractV4ABI,
+    balance: 0,
+    vaultBalance: 0,
+    decimals: 18,
+    deposit: true,
+    depositAll: false,
+    depositDisabled: false,
+    withdraw: true,
+    withdrawAll: true,
+    lastMeasurement: 10695309,
+    measurement: 1e18,
+  },
   {
     id: "WETH",
     name: "WETH",
