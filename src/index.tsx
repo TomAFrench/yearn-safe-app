@@ -7,13 +7,11 @@ import SafeProvider from "./contexts/SafeContext";
 import VaultProvider from "./contexts/VaultsContext";
 
 ReactDOM.render(
-  <>
-    <SafeProvider>
-      <VaultProvider>
-        <GlobalStyles />
-        <App />
-      </VaultProvider>
-    </SafeProvider>
-  </>,
+  <SafeProvider>
+    <VaultProvider>
+      <GlobalStyles />
+      <App />
+    </VaultProvider>
+  </SafeProvider>,
   document.getElementById("root"),
 );
