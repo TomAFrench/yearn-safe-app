@@ -9,7 +9,7 @@ import theme from "./theme";
 const VaultsOuterWrapper = styled.div`
   display: flex;
   flex-flow: column nowrap;
-  padding: 16px 24px;
+  padding: 6px 24px;
   width: calc(100% - 48px);
 `;
 
