@@ -35,7 +35,7 @@ const vaultAssets: VaultAsset[] = [
     depositDisabled: false,
     withdraw: true,
     withdrawAll: true,
-    lastMeasurement: 10695309,
+    lastMeasurement: 10774489,
     measurement: 1e18,
   },
   {
@@ -56,7 +56,7 @@ const vaultAssets: VaultAsset[] = [
     depositDisabled: false,
     withdraw: true,
     withdrawAll: true,
-    lastMeasurement: 10695309,
+    lastMeasurement: 10774489,
     measurement: 1e18,
   },
   {
