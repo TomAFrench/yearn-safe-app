@@ -1,7 +1,7 @@
 import vaultContractABI from "../abis/vaultContract.json";
 import vaultContractV2ABI from "../abis/vaultContractV2.json";
 import vaultContractV3ABI from "../abis/vaultContractV3.json";
-// import vaultContractV4ABI from "../abis/vaultContractV4.json";
+import vaultContractV4ABI from "../abis/vaultContractV4.json";
 
 import alinkIcon from "../assets/alink.svg";
 import crvIcon from "../assets/crv.svg";
@@ -11,6 +11,7 @@ import linkIcon from "../assets/link.svg";
 import tusdIcon from "../assets/tusd.svg";
 import usdcIcon from "../assets/usdc.svg";
 import usdtIcon from "../assets/usdt.svg";
+import wethIcon from "../assets/weth.svg";
 import yfiIcon from "../assets/yfi.svg";
 
 import { VaultAsset } from "../@types";
@@ -24,9 +25,9 @@ const vaultAssets: VaultAsset[] = [
   //   vaultSymbol: "yETH",
   //   icon: ethIcon,
   //   erc20address: "Ethereum",
-  //   vaultContractAddress: null,
+  //   vaultContractAddress: "0xe1237aA7f535b0CC33Fd973D66cBf830354D16c7",
   //   vaultContractABI: vaultContractV4ABI,
-  //   balance: 10000000000,
+  //   balance: 0,
   //   vaultBalance: 0,
   //   decimals: 18,
   //   deposit: true,
@@ -37,27 +38,27 @@ const vaultAssets: VaultAsset[] = [
   //   lastMeasurement: 10695309,
   //   measurement: 1e18,
   // },
-  // {
-  //   id: "WETH",
-  //   name: "WETH",
-  //   symbol: "WETH",
-  //   description: "Wrappeth Ether",
-  //   vaultSymbol: "yWETH",
-  //   icon: ethIcon,
-  //   erc20address: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
-  //   vaultContractAddress: null,
-  //   vaultContractABI: vaultContractV4ABI,
-  //   balance: 0,
-  //   vaultBalance: 0,
-  //   decimals: 18,
-  //   deposit: true,
-  //   depositAll: true,
-  //   depositDisabled: false,
-  //   withdraw: true,
-  //   withdrawAll: true,
-  //   lastMeasurement: 10695309,
-  //   measurement: 1e18,
-  // },
+  {
+    id: "WETH",
+    name: "WETH",
+    symbol: "WETH",
+    description: "Wrappeth Ether",
+    vaultSymbol: "yWETH",
+    icon: wethIcon,
+    erc20address: "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2",
+    vaultContractAddress: "0xe1237aA7f535b0CC33Fd973D66cBf830354D16c7",
+    vaultContractABI: vaultContractV4ABI,
+    balance: 0,
+    vaultBalance: 0,
+    decimals: 18,
+    deposit: true,
+    depositAll: true,
+    depositDisabled: false,
+    withdraw: true,
+    withdrawAll: true,
+    lastMeasurement: 10695309,
+    measurement: 1e18,
+  },
   {
     id: "YFI",
     name: "yearn.finance",
