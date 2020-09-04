@@ -21,7 +21,7 @@ const vaultDepositEthTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transa
   const vaultInterface: Interface = new Interface(vaultAsset.vaultContractABI);
 
   const depositTransaction: Transaction = {
-    data: vaultInterface.encodeFunctionData("depositEth"),
+    data: vaultInterface.encodeFunctionData("depositETH"),
     to: vaultAddress,
     value: amount,
   };
