@@ -9,7 +9,7 @@ const erc20ApproveTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transacti
   const approvalTransaction: Transaction = {
     data: erc20Interface.encodeFunctionData("approve", [vaultAsset.vaultContractAddress, amount]),
     to: vaultAsset.erc20address,
-    value: 0,
+    value: "0",
   };
 
   return approvalTransaction;

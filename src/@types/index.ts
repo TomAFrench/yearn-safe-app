@@ -33,5 +33,5 @@ export type VaultAsset = {
 export type Transaction = {
   data: string;
   to: string;
-  value: BigNumberish;
+  value: string;
 };

@@ -10,7 +10,7 @@ const vaultWithdrawTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transact
   const withdrawTransaction: Transaction = {
     data: vaultInterface.encodeFunctionData("withdraw", [amount]),
     to: vaultAddress,
-    value: 0,
+    value: "0",
   };
 
   return withdrawTransaction;

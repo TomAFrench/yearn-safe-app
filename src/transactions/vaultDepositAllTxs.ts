@@ -10,7 +10,7 @@ const vaultDepositAllTx = (vaultAsset: VaultAsset): Transaction => {
   const depositTransaction: Transaction = {
     data: vaultInterface.encodeFunctionData("depositAll"),
     to: vaultAddress,
-    value: 0,
+    value: "0",
   };
 
   return depositTransaction;

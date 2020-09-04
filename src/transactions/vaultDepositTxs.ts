@@ -10,7 +10,7 @@ const vaultDepositTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transacti
   const depositTransaction: Transaction = {
     data: vaultInterface.encodeFunctionData("deposit", [amount]),
     to: vaultAddress,
-    value: 0,
+    value: "0",
   };
 
   return depositTransaction;
@@ -23,7 +23,7 @@ const vaultDepositEthTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transa
   const depositTransaction: Transaction = {
     data: vaultInterface.encodeFunctionData("depositETH"),
     to: vaultAddress,
-    value: amount,
+    value: amount.toString(),
   };
 
   return depositTransaction;
