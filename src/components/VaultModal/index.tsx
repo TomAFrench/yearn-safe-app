@@ -10,11 +10,11 @@ import { BigNumberToRoundedHumanFormat } from "../../utils";
 import { vaultDepositTxs, vaultWithdrawTxs, vaultDepositAllTxs, vaultWithdrawAllTxs } from "../../transactions";
 
 const StyledItem = styled.div`
-  display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 0px 24px;
+  display: flex;
   height: 51px;
+  justify-content: space-between;
+  padding: 0px 24px;
 `;
 
 interface Props {

@@ -18,9 +18,9 @@ const TableWrapper = styled.div`
 `;
 
 const TopLeftHorizontalWrapper = styled.div`
+  align-items: center;
   display: flex;
   flex-flow: row nowrap;
-  align-items: center;
 `;
 
 const StyledTitle = styled(Title)`
