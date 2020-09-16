@@ -1,11 +1,12 @@
 import React, { ReactElement, useState, ChangeEvent } from "react";
+import { Transaction } from "@gnosis.pm/safe-apps-sdk";
 import { ModalFooterConfirmation, GenericModal, Text, TextField, Button } from "@gnosis.pm/safe-react-components";
 
 import styled from "styled-components";
 import { parseUnits, formatUnits } from "@ethersproject/units";
 import { BigNumber, BigNumberish } from "@ethersproject/bignumber";
 import { useSendTransactions } from "../../contexts/SafeContext";
-import { VaultAsset, Transaction } from "../../@types";
+import { VaultAsset } from "../../@types";
 import { BigNumberToRoundedHumanFormat } from "../../utils";
 import { vaultDepositTxs, vaultWithdrawTxs, vaultDepositAllTxs, vaultWithdrawAllTxs } from "../../transactions";
 

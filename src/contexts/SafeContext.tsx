@@ -1,8 +1,7 @@
 import React, { useState, createContext, ReactElement, useContext, useEffect } from "react";
 
-import initSdk, { SdkInstance, SafeInfo, Networks } from "@gnosis.pm/safe-apps-sdk";
+import initSdk, { SdkInstance, SafeInfo, Networks, Transaction } from "@gnosis.pm/safe-apps-sdk";
 import { Web3Provider } from "@ethersproject/providers";
-import { Transaction } from "../@types";
 
 interface Props {
   children: ReactElement | ReactElement[];

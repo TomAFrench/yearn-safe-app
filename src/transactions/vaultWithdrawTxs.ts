@@ -1,7 +1,7 @@
 import { Interface } from "@ethersproject/abi";
 import { BigNumberish } from "@ethersproject/bignumber";
-
-import { Transaction, VaultAsset } from "../@types";
+import { Transaction } from "@gnosis.pm/safe-apps-sdk";
+import { VaultAsset } from "../@types";
 
 const vaultWithdrawTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction => {
   const vaultAddress: string = vaultAsset.vaultContractAddress as string;
