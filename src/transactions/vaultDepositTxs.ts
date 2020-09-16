@@ -1,6 +1,7 @@
 import { Interface } from "@ethersproject/abi";
 import { BigNumberish } from "@ethersproject/bignumber";
-import { Transaction, VaultAsset } from "../@types";
+import { Transaction } from "@gnosis.pm/safe-apps-sdk";
+import { VaultAsset } from "../@types";
 import erc20ApproveTx from "./erc20ApproveTx";
 
 const vaultDepositTx = (vaultAsset: VaultAsset, amount: BigNumberish): Transaction => {

@@ -1,8 +1,14 @@
 import React, { useState, createContext, ReactElement, useContext, useEffect } from "react";
 
-import initSdk, { SdkInstance, SafeInfo, Networks } from "@gnosis.pm/safe-apps-sdk";
+import initSdk, {
+  SdkInstance,
+  SafeInfo,
+  Networks,
+  Transaction,
+  SentSDKMessage,
+  RequestId,
+} from "@gnosis.pm/safe-apps-sdk";
 import { Web3Provider } from "@ethersproject/providers";
-import { Transaction } from "../@types";
 
 interface Props {
   children: ReactElement | ReactElement[];
@@ -78,7 +84,10 @@ export const useAppsSdk = (): SdkInstance => {
   return appsSdk;
 };
 
-export const useSendTransactions = (): ((txs: Transaction[]) => void) => {
+export const useSendTransactions = (): ((
+  txs: Transaction[],
+  requestId?: RequestId,
+) => SentSDKMessage<"SEND_TRANSACTIONS">) => {
   const { sendTransactions } = useAppsSdk();
   return sendTransactions;
 };

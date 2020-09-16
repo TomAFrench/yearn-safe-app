@@ -29,9 +29,3 @@ export type VaultAsset = {
   measurement: number;
   apy?: number;
 };
-
-export type Transaction = {
-  data: string;
-  to: string;
-  value: string;
-};
